@@ -4,20 +4,20 @@
 
 # var setup
 @sorted = ARGV.map(&:to_i)
-brute_answer = nil
-brute_time = 0
+@brute_answer = nil
+@brute_time = 0
 @divide_and_conquer_answer = nil
 @divide_and_conquer_time = 0
 
 # brute force
 @sorted.each_with_index do |item, index|
-  brute_time += 1
+  @brute_time += 1
   unless item == index
-    brute_answer = index
+    @brute_answer = index
     break
   end
 end
-brute_answer ||= @sorted.size
+@brute_answer ||= @sorted.size
 
 # divide and conquer
 def recurse(min, max)
@@ -43,7 +43,7 @@ recurse(0, @sorted.size - 1)
 
 
 # showing results
-puts "The brute forced answer is #{brute_answer}" \
-     " and took #{brute_time} amount of time"
+puts "The brute forced answer is #{@brute_answer}" \
+     " and took #{@brute_time} amount of time"
 puts "The divide and conquer answer is #{@divide_and_conquer_answer}" \
      " and took #{@divide_and_conquer_time} amount of time"
